@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Tasks for <%= group.name %></title>
+</head>
+<body>
+  <h1>Tasks for <%= group.name %></h1>
+  <ul>
+    <% tasks.forEach(t => { %>
+      <li><a href="/group/<%= group.id %>/tasks/<%= t.id %>"><%= t.title %></a></li>
+    <% }); %>
+  </ul>
+  <h2>Add Task</h2>
+  <form method="post" action="/group/<%= group.id %>/tasks">
+    <input type="text" name="title" placeholder="Title" required><br>
+    <textarea name="description" placeholder="Description"></textarea><br>
+    <button type="submit">Add Task</button>
+  </form>
+  <p><a href="/">Back to groups</a></p>
+</body>
+</html>
