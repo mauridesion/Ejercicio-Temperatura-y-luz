@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title><%= task.title %></title>
+</head>
+<body>
+  <h1><%= task.title %></h1>
+  <p><%= task.description %></p>
+  <h2>Responses</h2>
+  <ul>
+    <% responses.forEach(r => { %>
+      <li><strong><%= r.student_name %>:</strong> <%= r.answer %></li>
+    <% }); %>
+  </ul>
+  <h2>Submit Response</h2>
+  <form method="post" action="/group/<%= groupId %>/tasks/<%= task.id %>/responses">
+    <input type="text" name="student_name" placeholder="Your name" required><br>
+    <textarea name="answer" placeholder="Your answer" required></textarea><br>
+    <button type="submit">Send</button>
+  </form>
+  <p><a href="/group/<%= groupId %>/tasks">Back to tasks</a></p>
+</body>
+</html>
